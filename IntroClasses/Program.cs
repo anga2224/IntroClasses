@@ -9,7 +9,7 @@ public class Program
         hero.Display();
         while (isPlaying)
         {
-            hero.TakeTurn();
+            isPlaying = hero.TakeTurn();
         }
         
         Console.WriteLine("Goodbye!");
