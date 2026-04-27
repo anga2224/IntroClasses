@@ -14,8 +14,17 @@ public class Player
 
     public void Move(int diffX, int diffY)
     {
-        _x += diffX;
-        _y += diffY;
+        int targetX = _x + diffX;
+        if (targetX >= 0 && targetX < Console.BufferWidth)
+        {
+            _x =  targetX;
+        }
+        
+        int targetY = _y + diffY;
+        if (targetY >= 0 && targetY < Console.BufferHeight)
+        {
+            _y =  targetY;
+        }
     }
     public bool TakeTurn()
     {
