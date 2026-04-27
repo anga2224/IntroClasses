@@ -1,29 +1,35 @@
+using System.Runtime.Intrinsics;
+
 namespace IntroClasses;
 
 public class Player
 {
-    private int _x;
-    private int _y;
+    private Vector2 _position = new Vector2(4,2);
     private string _avatar = "@";
+
+    public Player(Vector2 startingPosition)
+    {
+        _position = startingPosition;
+    }
 
     public void Display()
     {
-        Console.SetCursorPosition(_x, _y); //powoduje że snake się tworzy działa jak insert
+        Console.SetCursorPosition(_position.X, _position.Y); //powoduje że snake się tworzy działa jak insert
         Console.Write(_avatar); //wypisuje w konkretnym miejscu
     } //CTRL+H zastępowanie
 
     public void Move(int diffX, int diffY)
     {
-        int targetX = _x + diffX;
+        int targetX = _position.X + diffX;
         if (targetX >= 0 && targetX < Console.BufferWidth)
         {
-            _x =  targetX;
+            _position.X =  targetX;
         }
         
-        int targetY = _y + diffY;
+        int targetY = _position.Y + diffY;
         if (targetY >= 0 && targetY < Console.BufferHeight)
         {
-            _y =  targetY;
+            _position.Y =  targetY;
         }
     }
     public bool TakeTurn()
@@ -57,7 +63,7 @@ public class Player
     {
         bool isPlaying = true;
         input = Console.ReadKey(true);
-        Console.SetCursorPosition(_x, _y);
+        Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
         return isPlaying;
     }
