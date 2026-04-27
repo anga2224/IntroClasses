@@ -14,16 +14,12 @@ public class Player
 
     public void Move(int diffX, int diffY)
     {
-        int targetX = _x + diffX;
         _x += diffX;
         _y += diffY;
     }
     public bool TakeTurn()
     {
-        bool isPlaying = true;
-        ConsoleKeyInfo input = Console.ReadKey(true);
-        Console.SetCursorPosition(_x, _y);
-        Console.Write(" ");
+        var isPlaying = IsPlaying(out var input);
         switch (input.Key)
         {
             case ConsoleKey.S:
@@ -45,6 +41,15 @@ public class Player
             
         Display();
         
+        return isPlaying;
+    }
+
+    private bool IsPlaying(out ConsoleKeyInfo input)
+    {
+        bool isPlaying = true;
+        input = Console.ReadKey(true);
+        Console.SetCursorPosition(_x, _y);
+        Console.Write(" ");
         return isPlaying;
     }
 }
