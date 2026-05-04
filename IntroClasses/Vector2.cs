@@ -1,6 +1,6 @@
 namespace IntroClasses;
 
-public struct Vector2 
+public struct Vector2 //struktura dane są kopiowane
 {
     public int X;
     public int Y;

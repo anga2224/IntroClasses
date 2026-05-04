@@ -2,37 +2,12 @@ using System.Runtime.Intrinsics;
 
 namespace IntroClasses;
 
-public class Player
+public class Player : Character
 {
-    private Vector2 _position = new Vector2(4,2);
-    private string _avatar = "@";
-
-    public Player(Vector2 startingPosition)
+    public Player(Vector2 startingPosition) : base(startingPosition) //wywołuje kontstrukor z klasy charakter
     {
-        _position = startingPosition;
     }
-
-    public void Display()
-    {
-        Console.SetCursorPosition(_position.X, _position.Y); //powoduje że snake się tworzy działa jak insert
-        Console.Write(_avatar); //wypisuje w konkretnym miejscu
-    } //CTRL+H zastępowanie
-
-    public void Move(int diffX, int diffY)
-    {
-        int targetX = _position.X + diffX;
-        if (targetX >= 0 && targetX < Console.BufferWidth)
-        {
-            _position.X =  targetX;
-        }
-        
-        int targetY = _position.Y + diffY;
-        if (targetY >= 0 && targetY < Console.BufferHeight)
-        {
-            _position.Y =  targetY;
-        }
-    }
-    public bool TakeTurn()
+    public override bool TakeTurn()
     {
         var isPlaying = IsPlaying(out var input);
         switch (input.Key)
@@ -53,13 +28,12 @@ public class Player
               isPlaying = false;
             break;
         }
-            
         Display();
         
         return isPlaying;
     }
 
-    private bool IsPlaying(out ConsoleKeyInfo input)
+    protected bool IsPlaying(out ConsoleKeyInfo input) //dzieci mogą dziedziczyć w protected
     {
         bool isPlaying = true;
         input = Console.ReadKey(true);
