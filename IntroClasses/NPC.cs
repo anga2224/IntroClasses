@@ -10,11 +10,20 @@ public class NPC : Character
     {
         Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
-        int targetX = Random.Shared.Next(-1,2); // shared przechowuje jakias generator losowych liczb 
-        // piersza minimalna która się wylosuje, a druga to ta która się nie wylosuje tylko liczba o jeden mniejsza
-        int targetY = Random.Shared.Next(-1,2);
-        Move(targetX, targetY);
+        List<Vector2> availableDirections = [
+            new Vector2(-1,0), //w lewo
+            new Vector2(1,0), //w prawo
+            new Vector2(0,-1), //w górę
+            new Vector2(0,1) //w dół
+        ];
+        int index = Random.Shared.Next(availableDirections.Count); //indeks od 0 do 3, mozna podac tylko max nie trzeba dawac 0 
+        Vector2 direction = availableDirections[index]; 
+        Move(direction.X, direction.Y);
         Display();
         return true;
     }
 }
+        /*int targetX = Random.Shared.Next(-1,2); // shared przechowuje jakias generator losowych liczb 
+        // piersza minimalna która się wylosuje, a druga to ta która się nie wylosuje tylko liczba o jeden mniejsza
+        int targetY = Random.Shared.Next(-1,2);*/
+        //  Move(availableDirections[index].X, availableDirections[index].Y); takie samo działanie
