@@ -10,7 +10,10 @@ public class NPC : Character
     {
         Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
-        Move(1,0);
+        int targetX = Random.Shared.Next(-1,2); // shared przechowuje jakias generator losowych liczb 
+        // piersza minimalna która się wylosuje, a druga to ta która się nie wylosuje tylko liczba o jeden mniejsza
+        int targetY = Random.Shared.Next(-1,2);
+        Move(targetX, targetY);
         Display();
         return true;
     }
