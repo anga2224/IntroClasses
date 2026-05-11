@@ -4,32 +4,30 @@ namespace IntroClasses;
 
 public class Player : Character
 {
-    public Player(Vector2 startingPosition) : base(startingPosition) //wywołuje kontstrukor z klasy charakter
+    private readonly Dictionary<ConsoleKey, Vector2> _inputMap;
+
+    public Player(Vector2 startingPosition, Dictionary<ConsoleKey, Vector2> inputMap) : base(startingPosition) //wywołuje kontstrukor z klasy charakter
     {
+        _inputMap = inputMap; //nie mozna zmienic wartosci poza konstruktorem
     }
     public override bool TakeTurn()
     {
         var isPlaying = IsPlaying(out var input);
+        if (_inputMap.ContainsKey(input.Key))
+        {
+            Vector2 direction = _inputMap[input.Key];
+            Move(direction);
+        }
+        else
+        {
         switch (input.Key)
         {
-            case ConsoleKey.S:
-                Move(0, 1);
-                break;
-            case ConsoleKey.W:
-                Move(0, -1);
-                break;
-            case ConsoleKey.A:
-                Move(-1, 0);
-                break;
-            case ConsoleKey.D:
-                Move(1, 0);
-                break;
             case ConsoleKey.Q:
               isPlaying = false;
             break;
         }
+        }
         Display();
-        
         return isPlaying;
     }
 

@@ -4,6 +4,7 @@ public abstract class Character
 {
     protected Vector2 _position = new Vector2(4,2);
     private string _avatar = "@";
+    
 
     public Character(Vector2 startingPosition)
     {

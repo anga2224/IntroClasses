@@ -2,6 +2,12 @@ namespace IntroClasses;
 
 public class NPC : Character
 {
+    List<Vector2> availableDirections = [
+        new Vector2(-1,0), //w lewo
+        new Vector2(1,0), //w prawo
+        new Vector2(0,-1), //w górę
+        new Vector2(0,1) //w dół
+    ];
     public NPC(Vector2 Startingposition) : base(Startingposition)
     {
     }
@@ -10,12 +16,7 @@ public class NPC : Character
     {
         Console.SetCursorPosition(_position.X, _position.Y);
         Console.Write(" ");
-        List<Vector2> availableDirections = [
-            new Vector2(-1,0), //w lewo
-            new Vector2(1,0), //w prawo
-            new Vector2(0,-1), //w górę
-            new Vector2(0,1) //w dół
-        ];
+        
         int index = Random.Shared.Next(availableDirections.Count); //indeks od 0 do 3, mozna podac tylko max nie trzeba dawac 0 
         Vector2 direction = availableDirections[index]; 
         Move(direction);
