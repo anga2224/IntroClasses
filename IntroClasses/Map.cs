@@ -8,16 +8,17 @@ public class Map
     {
         string[] lines = File.ReadAllLines(path);
         _cells = new Cell[lines.Length][];
-        for (var rowindex = 0 ; rowindex < lines.Length; rowindex++)
+        for (var rowIndex = 0; rowIndex < lines.Length; rowIndex++)
         {
-            var line = lines[rowindex];
-            _cells[rowindex] = new Cell[line.Length];
-            Cell[] row = _cells[line.Length];
-            for (var columnindex = 0; columnindex < line.Length; columnindex++)
+            var line = lines[rowIndex];
+            _cells[rowIndex] = new Cell[line.Length];
+            Cell[] row = _cells[rowIndex];
+
+            for (var columnIndex = 0; columnIndex < line.Length; columnIndex++)
             {
-                var character = line[columnindex];
-                row[columnindex] = new Cell();
-                row[columnindex].Visuals = character;
+                var character = line[columnIndex];
+                row[columnIndex] = new Cell();
+                row[columnIndex].Visuals = character;
             }
         }
     }
