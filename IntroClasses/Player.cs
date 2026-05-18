@@ -10,9 +10,12 @@ public class Player : Character
     {
         _inputMap = inputMap; //nie mozna zmienic wartosci poza konstruktorem
     }
-    public override bool TakeTurn()
+    public override bool TakeTurn(Map map)
     {
-        var isPlaying = IsPlaying(out var input);
+        bool isPlaying = true;
+        var input = Console.ReadKey(true);
+        Console.SetCursorPosition(_position.X, _position.Y);
+        Console.Write(map.GetCell(_position.X, _position.Y).Visuals);
         if (_inputMap.ContainsKey(input.Key))
         {
             Vector2 direction = _inputMap[input.Key];
@@ -28,15 +31,6 @@ public class Player : Character
         }
         }
         Display();
-        return isPlaying;
-    }
-
-    protected bool IsPlaying(out ConsoleKeyInfo input) //dzieci mogą dziedziczyć w protected
-    {
-        bool isPlaying = true;
-        input = Console.ReadKey(true);
-        Console.SetCursorPosition(_position.X, _position.Y);
-        Console.Write(" ");
         return isPlaying;
     }
 }

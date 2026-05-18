@@ -37,6 +37,6 @@ public abstract class Character
         }
     }
 
-    public abstract bool TakeTurn(); //ten kto dziedziczy sam implementuje i wszyscy muszą mieć
+    public abstract bool TakeTurn(Map map); //ten kto dziedziczy sam implementuje i wszyscy muszą mieć
 
 }

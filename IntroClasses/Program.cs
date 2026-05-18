@@ -38,7 +38,7 @@ public class Program
         {
             foreach (Character character in characters) //wszystkie charaktery w liscie
             {
-               isPlaying = character.TakeTurn();
+               isPlaying = character.TakeTurn(map);
             }
         }
         
