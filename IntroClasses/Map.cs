@@ -40,4 +40,14 @@ public class Map
     {
         return _cells[y][x];
     }
+
+    public int GetHeight()
+    {
+        return _cells.Length;
+    }
+
+    public int GetRowWidth(int row) /*szerokosc wiersza konkretnego*/
+    {
+        return _cells[row].Length;
+    }
 }

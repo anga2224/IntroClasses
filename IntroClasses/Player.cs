@@ -19,7 +19,7 @@ public class Player : Character
         if (_inputMap.ContainsKey(input.Key))
         {
             Vector2 direction = _inputMap[input.Key];
-            Move(direction);
+            Move(direction, map);
         }
         else
         {

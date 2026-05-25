@@ -17,23 +17,24 @@ public abstract class Character
         Console.Write(_avatar);
     }
 
-    public void Move(Vector2 direction)
+    public void Move(Vector2 direction, Map map)
     {
-        Move(direction.X, direction.Y);
+        Move(direction.X, direction.Y,map);
     }
 
-    public void Move(int diffX, int diffY)
+    public void Move(int diffX, int diffY, Map/*typ danych*/ map/*nazwa*/)
     {
         int targetX = _position.X + diffX;
-        if (targetX >= 0 && targetX < Console.BufferWidth)
-        {
-            _position.X =  targetX;
-        }
-        
         int targetY = _position.Y + diffY;
-        if (targetY >= 0 && targetY < Console.BufferHeight)
+        
+        if (targetY >= 0 && targetY < Console.BufferHeight && targetY < map.GetHeight())
         {
             _position.Y =  targetY;
+            
+            if (targetX >= 0 && targetX < Console.BufferWidth && targetX < map.GetRowWidth(targetY))
+            {
+                _position.X =  targetX;
+            }
         }
     }
 

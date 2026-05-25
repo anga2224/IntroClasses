@@ -19,7 +19,7 @@ public class NPC : Character
         
         int index = Random.Shared.Next(availableDirections.Count); //indeks od 0 do 3, mozna podac tylko max nie trzeba dawac 0 
         Vector2 direction = availableDirections[index]; 
-        Move(direction);
+        Move(direction, map);
         Display();
         return true;
     }
