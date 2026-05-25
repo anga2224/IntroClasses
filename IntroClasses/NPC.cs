@@ -15,7 +15,9 @@ public class NPC : Character
     public override bool TakeTurn(Map map)
     {
         Console.SetCursorPosition(_position.X, _position.Y);
-        Console.Write(map.GetCell(_position.X, _position.Y).Visuals);
+        Cell cell = map.GetCell(_position.X, _position.Y);
+        Console.Write(cell.Visuals);
+        cell.Occupant = null;
         
         int index = Random.Shared.Next(availableDirections.Count); //indeks od 0 do 3, mozna podac tylko max nie trzeba dawac 0 
         Vector2 direction = availableDirections[index]; 
