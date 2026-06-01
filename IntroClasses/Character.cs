@@ -6,9 +6,11 @@ public abstract class Character
     private string _avatar = "@";
     
 
-    public Character(Vector2 startingPosition)
+    public Character(Vector2 startingPosition,  Map map)
     {
         _position = startingPosition;
+        Cell cell = map.GetCell(_position.X, _position.Y);
+        cell.Occupant = this; //this to ja zajmuje to
     }
 
     public void Display()
