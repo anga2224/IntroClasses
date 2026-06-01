@@ -16,12 +16,14 @@ public class NPC : Character
     {
         Console.SetCursorPosition(_position.X, _position.Y);
         Cell cell = map.GetCell(_position.X, _position.Y);
-        Console.Write(cell.Visuals);
-        cell.Occupant = null;
         
         int index = Random.Shared.Next(availableDirections.Count); //indeks od 0 do 3, mozna podac tylko max nie trzeba dawac 0 
         Vector2 direction = availableDirections[index]; 
-        Move(direction, map);
+        if (Move(direction, map))
+        {
+            Console.Write(cell.Visuals);
+            cell.Occupant = null;
+        }
         Display();
         return true;
     }

@@ -18,7 +18,7 @@ public class Program
         
         
         bool isPlaying = true;
-        Vector2 startingPosition = new Vector2(4,2);
+        Vector2 startingPosition = new Vector2(6,1);
         Character hero = new Player(startingPosition, directions);
         startingPosition.X = 1;
         startingPosition.Y = 1;

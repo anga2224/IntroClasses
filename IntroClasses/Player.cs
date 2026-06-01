@@ -16,12 +16,16 @@ public class Player : Character
         var input = Console.ReadKey(true);
         Console.SetCursorPosition(_position.X, _position.Y);
         Cell cell = map.GetCell(_position.X, _position.Y);
-        Console.Write(cell.Visuals);
-        cell.Occupant = null;
+        
         if (_inputMap.ContainsKey(input.Key))
         {
             Vector2 direction = _inputMap[input.Key];
-            Move(direction, map);
+            bool moved = Move(direction, map);
+            if (moved)
+            {
+                Console.Write(cell.Visuals);
+                cell.Occupant = null; 
+            }
         }
         else
         {
