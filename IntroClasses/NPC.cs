@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace IntroClasses;
 
 public class NPC : Character
