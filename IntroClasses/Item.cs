@@ -6,5 +6,6 @@ public class Item: GameObject
     {
       Cell cell = map.GetCell(_position.X, _position.Y);
       cell.Item = this;
+      
     }
 }

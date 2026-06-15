@@ -27,9 +27,11 @@ public class Program
         startingPosition.Y = 1;
         //startingPosition = new Vector2(0, 0);
         Character anotherHero = new NPC('$', startingPosition, map);
+        Item item = new Item('*', new Vector2(3, 8), map);
         List<Character> characters = [hero, anotherHero];
         
         map.Display();
+        item.Display();
         
         foreach (Character character in characters)
         {
