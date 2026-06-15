@@ -4,8 +4,10 @@ namespace IntroClasses;
 
 public abstract class Character : GameObject
 {
+    private List<Item> _inventory;
     public Character(char avatar, Vector2 startingPosition, Map map) : base(avatar, startingPosition)
     {
+        _inventory = [];
         Cell cell = map.GetCell(_position.X, _position.Y);
         cell.Occupant = this; //this to ja zajmuje to
     }
@@ -33,7 +35,9 @@ public abstract class Character : GameObject
 
                     if (cell.HasItem())
                     {
-                        cell.TakeItem();
+                        //Item item = cell.TakeItem();
+                       // AddItem(item); to samo obie robią //dodawanie itemu do inventory
+                       AddItem(cell.TakeItem());
                     }
                     return true;
                 }
@@ -42,6 +46,11 @@ public abstract class Character : GameObject
         return false;
     }
 
+    public void AddItem(Item item)
+    {
+        _inventory.Add(item); //dodawanie itemu do inventory
+    }
+    
     public abstract bool TakeTurn(Map map); //ten kto dziedziczy sam implementuje i wszyscy muszą mieć
 
 }
