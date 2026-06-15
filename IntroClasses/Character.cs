@@ -30,6 +30,11 @@ public abstract class Character : GameObject
                     _position.Y =  targetY;
                     _position.X =  targetX;
                     cell.Occupant = this;
+
+                    if (cell.HasItem())
+                    {
+                        cell.TakeItem();
+                    }
                     return true;
                 }
             }

@@ -8,6 +8,31 @@ public class Cell
 
     public void Display()
     {
-        Console.Write(Visuals);
+        if (Item != null)
+        {
+            Item.Display();
+        }
+        else
+        {
+            Console.Write(Visuals); 
+        }
+    }
+
+    public bool HasItem()
+    {
+        return Item != null;
+    }
+
+    public void PutItem(Item item)
+    {
+        Item = item;
+    }
+
+    public Item TakeItem()
+    {
+        Item item =  Item; //jest item
+        Item = null; //stwierdzsmy po stanieciu ze j7z nie ma zadnej rzeczy tam
+        
+        return item; //zapisanie do inventory przez postac ona moze zapisac
     }
 }
