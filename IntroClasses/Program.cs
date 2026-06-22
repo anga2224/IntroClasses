@@ -31,14 +31,6 @@ public class Program
         List<Character> characters = [hero, anotherHero];
         
         map.Display();
-        item.Display();
-        
-        foreach (Character character in characters)
-        {
-            character.Display();
-        }
-        
-        //anotherHero.Display(); //wyswietlanie 
         
         while (isPlaying)
         {
@@ -51,3 +43,4 @@ public class Program
         Console.WriteLine("Goodbye!");
     }
 }
+        //anotherHero.Display(); //wyswietlanie 
