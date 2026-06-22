@@ -15,8 +15,14 @@ public abstract class GameObject
 
     public void Display()
     {
-        Console.SetCursorPosition(_position.X, _position.Y);
+        Display(_position);
+    }
+
+    public void Display(Vector2 screenPosition)
+    {
+        Console.SetCursorPosition(screenPosition.X,screenPosition.Y);
         Console.Write(_avatar);
     }
+    
 
 }
